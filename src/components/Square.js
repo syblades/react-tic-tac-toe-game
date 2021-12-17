@@ -8,7 +8,7 @@ const Square = (props) => {
     props.onClickCallback(props.id);
   };
   return (
-    <button className="square" onClick={callback}>
+    <button className="square" data-pro={props.value} onClick={callback}>
       {props.value}
     </button>
   );

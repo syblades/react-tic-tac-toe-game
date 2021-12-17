@@ -77,20 +77,26 @@ const App = () => {
   };
 
   const resetGame = () => {
-    return setSquares(generateSquares());
+    setSquares(generateSquares());
   };
 
   const onClickCallback = (id) => {
-    // if (gameWinner === PLAYER_1 || PLAYER_2) {
-    //   return;
-    // }
     console.log('click', id);
     const newSquares = [...squares];
-    // for row in board for ele in row
+
+    // returns early if a winner has been choosen
+    if (checkForWinner()) {
+      return;
+    }
+
     for (let i = 0; i < newSquares.length; i++) {
       for (let j = 0; j < newSquares[i].length; j++) {
-        if (newSquares[i][j].id === id) {
+        if (newSquares[i][j].id === id && newSquares[i][j].value === '') {
           newSquares[i][j].value = currentPlayer;
+          // if square has been clicked this
+          // prevents it from being clicked again
+        } else if (newSquares[i][j].id === id) {
+          return;
         }
       }
     }
@@ -103,9 +109,9 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>Winner is {gameWinner} </h2>
+        <h2 id="win">Winner is... {gameWinner}</h2>
         <h3> Current player: {currentPlayer}</h3>
-        <button onClick={resetGame}>Reset Game</button>
+        <button onClick={resetGame}>Play again!</button>
       </header>
       <main>
         <Board squares={squares} onClickCallback={onClickCallback} />
