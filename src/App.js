@@ -3,8 +3,8 @@ import './App.css';
 
 import Board from './components/Board';
 
-const player_1 = 'X';
-const player_2 = 'O';
+const PLAYER_1 = 'x';
+const PLAYER_2 = 'o';
 
 const generateSquares = () => {
   const squares = [];
@@ -30,14 +30,14 @@ const App = () => {
   // empty value and unique ids.
   const [squares, setSquares] = useState(generateSquares());
 
-  // Wave 2
-  // You will need to create a method to change the square
-  //   When it is clicked on.
-  //   Then pass it into the squares as a callback
+  //update current player
+  const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
+
+  // sets the game winner
+  const [gameWinner, setGameWinner] = useState('');
 
   const checkForWinner = () => {
     let i = 0;
-
     // Check all the rows and columns for a winner
     while (i < 3) {
       if (
@@ -77,18 +77,38 @@ const App = () => {
   };
 
   const resetGame = () => {
-    // Complete in Wave 4
+    return setSquares(generateSquares());
+  };
+
+  const onClickCallback = (id) => {
+    // if (gameWinner === PLAYER_1 || PLAYER_2) {
+    //   return;
+    // }
+    console.log('click', id);
+    const newSquares = [...squares];
+    // for row in board for ele in row
+    for (let i = 0; i < newSquares.length; i++) {
+      for (let j = 0; j < newSquares[i].length; j++) {
+        if (newSquares[i][j].id === id) {
+          newSquares[i][j].value = currentPlayer;
+        }
+      }
+    }
+    setSquares(newSquares);
+    setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
+    setGameWinner(checkForWinner());
   };
 
   return (
-    <div className='App'>
-      <header className='App-header'>
+    <div className="App">
+      <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>The winner is ... -- Fill in for wave 3 </h2>
-        <button>Reset Game</button>
+        <h2>Winner is {gameWinner} </h2>
+        <h3> Current player: {currentPlayer}</h3>
+        <button onClick={resetGame}>Reset Game</button>
       </header>
       <main>
-        <Board squares={squares} />
+        <Board squares={squares} onClickCallback={onClickCallback} />
       </main>
     </div>
   );
