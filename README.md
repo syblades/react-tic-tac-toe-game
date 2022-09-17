@@ -4,4 +4,4 @@ Tic-Tac-Toe is a simple, two-player game that, if played optimally by both playe
 
 Good luck and have fun!
 
-![Picture of tic-tac-toe board](/src/ttt.jpg "Tic-Tac-Toe")
+![Picture of tic-tac-toe board](/src/ttt.png "Tic-Tac-Toe")
