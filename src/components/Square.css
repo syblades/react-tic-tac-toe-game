@@ -11,10 +11,10 @@
   margin: 2px;
 }
 
-button.square[data-pro='x'] {
-  color: #2a0146;
+button.square[data-pro='X'] {
+  color: #06037d;
 }
 
-button.square[data-pro='o'] {
-  color:#b33d07;
+button.square[data-pro='O'] {
+  color:#036c21;
 }
