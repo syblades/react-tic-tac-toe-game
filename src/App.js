@@ -3,8 +3,8 @@ import './App.css';
 
 import Board from './components/Board';
 
-const PLAYER_1 = 'x';
-const PLAYER_2 = 'o';
+const PLAYER_1 = 'X';
+const PLAYER_2 = 'O';
 
 const generateSquares = () => {
   const squares = [];
@@ -78,6 +78,7 @@ const App = () => {
 
   const resetGame = () => {
     setSquares(generateSquares());
+    setGameWinner('');
   };
 
   const onClickCallback = (id) => {
@@ -111,7 +112,7 @@ const App = () => {
         <h1>React Tic Tac Toe</h1>
         <h2 id="win">Winner is... {gameWinner}</h2>
         <h3> Current player: {currentPlayer}</h3>
-        <button onClick={resetGame}>Play again!</button>
+        <button onClick={resetGame}>Play Again!</button>
       </header>
       <main>
         <Board squares={squares} onClickCallback={onClickCallback} />
