@@ -122,8 +122,8 @@ const App = () => {
           {gameWinner === null
             ? `Current player: ${currentPlayer}`
             : gameWinner === 'Tie'
-            ? 'It\'s a Tie! Everyone Wins! 🏆✨'
-            : `Winner is: ${gameWinner} 🎉`}
+            ? "It's a Tie! Everyone Wins! 🏆✨"
+            : `Winner is ${gameWinner} 🎉`}
         </h2>
         <button onClick={resetGame}>Play Again!</button>
       </header>
