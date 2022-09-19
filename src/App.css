@@ -24,14 +24,3 @@ button {
 button:hover {
   color: #960303;
 }
-
-#win {
-  border: dotted 6px #0e8e08;
-  border-radius: 22px;
-  
-  border-width: auto;
-  padding: 20px;
-  font-size: 40px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
