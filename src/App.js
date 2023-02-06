@@ -38,7 +38,7 @@ const App = () => {
 
   const checkForWinner = () => {
     let i = 0;
-    // Check all the rows and columns for a winner
+    // Checks all the rows and columns for a winner
     while (i < 3) {
       if (
         squares[i][0].value === squares[i][1].value &&
@@ -93,7 +93,7 @@ const App = () => {
     console.log('click', id);
     const newSquares = [...squares];
 
-    // returns early if a winner has been choosen
+    // returns early if a winner has been chosen
     if (gameWinner !== null) {
       return;
     }
@@ -125,7 +125,7 @@ const App = () => {
             ? "It's a Tie! Everyone Wins! 🏆✨"
             : `Winner is ${gameWinner} 🎉`}
         </h2>
-        <button onClick={resetGame}>Play Again!</button>
+        <button onClick={resetGame}>Play!</button>
       </header>
       <main>
         <Board squares={squares} onClickCallback={updateSquares} />
